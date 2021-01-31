@@ -43,6 +43,8 @@
 
 namespace SebastianBergmann\PHPUnit\SkeletonGenerator;
 
+use SebastianBergmann\Template as tplt;
+
 /**
  * Generator for class skeletons from test classes.
  *
@@ -102,13 +104,13 @@ class ClassGenerator extends AbstractGenerator
         $methods = '';
 
         foreach ($this->findTestedMethods() as $method) {
-            $methodTemplate = new \Text_Template(
+            $methodTemplate = new tplt\Template(
                 sprintf(
-                    '%s%stemplate%sMethod.tpl',
-                    __DIR__,
-                    DIRECTORY_SEPARATOR,
-                    DIRECTORY_SEPARATOR
-                )
+                        '%s%stemplate%sMethod.tpl',
+                        __DIR__,
+                        DIRECTORY_SEPARATOR,
+                        DIRECTORY_SEPARATOR
+                    )
             );
 
             $methodTemplate->setVar(
@@ -118,13 +120,13 @@ class ClassGenerator extends AbstractGenerator
             $methods .= $methodTemplate->render();
         }
 
-        $classTemplate = new \Text_Template(
+        $classTemplate = new tplt\Template(
             sprintf(
-                '%s%stemplate%sClass.tpl',
-                __DIR__,
-                DIRECTORY_SEPARATOR,
-                DIRECTORY_SEPARATOR
-            )
+                    '%s%stemplate%sClass.tpl',
+                    __DIR__,
+                    DIRECTORY_SEPARATOR,
+                    DIRECTORY_SEPARATOR
+                )
         );
 
         $classTemplate->setVar(
@@ -255,7 +257,7 @@ class ClassGenerator extends AbstractGenerator
                 continue;
             }
 
-            list ($token, $value) = $token;
+            list($token, $value) = $token;
 
             switch ($token) {
                 case T_NEW:
@@ -458,7 +460,7 @@ class ClassGenerator extends AbstractGenerator
                             $tokens[$i+2] == '&' &&
                             is_array($tokens[$i+3]) &&
                             $tokens[$i+3][0] == T_STRING))) {
-                        continue;
+                        continue 2;
                     }
 
                     $currentBlock             = T_FUNCTION;

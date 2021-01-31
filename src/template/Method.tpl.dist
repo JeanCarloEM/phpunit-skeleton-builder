@@ -4,6 +4,10 @@
      */
     public function {methodName}()
     {
-        // Remove the following line when you implement this method.
-        throw new RuntimeException('Not yet implemented.');
+        // Remove the following lines when you implement this method.
+        if (!\class_exists('PHPUnit\\Framework\\TestCase', false)) {
+            throw new RuntimeException('Not yet implemented.');
+        } else {
+            return 0;
+        }
     }

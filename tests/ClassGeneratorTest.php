@@ -1,12 +1,12 @@
 <?php
 namespace SebastianBergmann\PHPUnit\SkeletonGenerator;
 
-use PHPUnit_Framework_TestCase;
+use \PHPUnit\Framework\TestCase;
 use org\bovigo\vfs\vfsStream;
 
-class ClassGeneratorTest extends PHPUnit_Framework_TestCase
+class ClassGeneratorTest extends \PHPUnit\Framework\TestCase
 {
-    protected function setUp()
+    protected function setUp(): void
     {
         vfsStream::setup();
     }
@@ -17,7 +17,7 @@ class ClassGeneratorTest extends PHPUnit_Framework_TestCase
      */
     public function testGeneratesCodeCorrectly($testClass)
     {
-        $className     = substr($testClass, 0, strlen($testClass) - 4);
+        $className = substr($testClass, 0, strlen($testClass) - 4);
         $generatedFile = vfsStream::url('root') . '/' . $className . '.php';
 
         $generator = new ClassGenerator(
@@ -28,6 +28,8 @@ class ClassGeneratorTest extends PHPUnit_Framework_TestCase
         );
 
         $generator->write();
+
+        require_once $generatedFile;
 
         $this->assertStringMatchesFormatFile(
             __DIR__ . '/_fixture/_expected/' . $className . '.php',

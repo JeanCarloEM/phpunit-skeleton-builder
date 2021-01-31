@@ -43,6 +43,8 @@
 
 namespace SebastianBergmann\PHPUnit\SkeletonGenerator;
 
+use SebastianBergmann\Template as tplt;
+
 /**
  * Generator for test class skeletons from classes.
  *
@@ -236,7 +238,7 @@ class TestGenerator extends AbstractGenerator
                                 $template .= 'Static';
                             }
 
-                            $methodTemplate = new \Text_Template(
+                            $methodTemplate = new tplt\Template(
                                 sprintf(
                                     '%s%stemplate%s%s.tpl',
                                     __DIR__,
@@ -264,7 +266,7 @@ class TestGenerator extends AbstractGenerator
                                     'annotation'     => trim($annotation),
                                     'arguments'      => $matches[1],
                                     'assertion'      => isset($assertion) ? $assertion : '',
-                                    'expected'       => $matches[3],
+                                    'expected'       => \trim($matches[3]),
                                     'origMethodName' => $origMethodName,
                                     'className'      => $this->inClassName['fullyQualifiedClassName'],
                                     'methodName'     => $methodName
@@ -279,7 +281,7 @@ class TestGenerator extends AbstractGenerator
                 }
 
                 if (!$assertAnnotationFound) {
-                    $methodTemplate = new \Text_Template(
+                    $methodTemplate = new tplt\Template(
                         sprintf(
                             '%s%stemplate%sIncompleteTestMethod.tpl',
                             __DIR__,
@@ -301,7 +303,7 @@ class TestGenerator extends AbstractGenerator
             }
         }
 
-        $classTemplate = new \Text_Template(
+        $classTemplate = new tplt\Template(
             sprintf(
                 '%s%stemplate%sTestClass.tpl',
                 __DIR__,

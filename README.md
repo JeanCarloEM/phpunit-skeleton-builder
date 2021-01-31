@@ -1,37 +1,28 @@
-**This project has been abandoned and is no longer maintained.**
+# PHPUnit Skeleton Builder
+[![Latest Stable Version](https://poser.pugx.org/jeancarloem/phpunit-skeleton-builder/v)](//packagist.org/packages/phpunit/phpunit) [![Total Downloads](https://poser.pugx.org/pjeancarloem/phpunit-skeleton-builder/downloads)](//packagist.org/packages/phpunit/phpunit) [![Latest Unstable Version](https://poser.pugx.org/jeancarloem/phpunit-skeleton-builder/v/unstable)](//packagist.org/packages/phpunit/phpunit) [![License](https://poser.pugx.org/jeancarloem/phpunit-skeleton-builder/license)](//packagist.org/packages/phpunit/phpunit)
 
-# PHPUnit Skeleton Generator
+`phpunit-skelgen-builder` is a tool that can generate skeleton test classes from production code classes and vice versa.
 
-`phpunit-skelgen` is a tool that can generate skeleton test classes from production code classes and vice versa.
+> See the changelog [here](changes.md) from the [sebastianbergmann/phpunit-skeleton-generator](https://github.com/sebastianbergmann/phpunit-skeleton-generator)
 
-## Installation
 
-### PHP Archive (PHAR)
+## Installation with Composer
 
-The easiest way to obtain phpunit-skelgen is to download a [PHP Archive (PHAR)](http://php.net/phar) that has all required dependencies of phpunit-skelgen bundled in a single file:
-
-    wget https://phar.phpunit.de/phpunit-skelgen.phar
-    chmod +x phpunit-skelgen.phar
-    mv phpunit-skelgen.phar /usr/local/bin/phpunit-skelgen
-
-You can also immediately use the PHAR after you have downloaded it, of course:
-
-    wget https://phar.phpunit.de/phpunit-skelgen.phar
-    php phpunit-skelgen.phar
-
-### Composer
-
-Simply add a dependency on `phpunit/phpunit-skeleton-generator` to your project's `composer.json` file if you use [Composer](http://getcomposer.org/) to manage the dependencies of your project. Here is a minimal example of a `composer.json` file that just defines a development-time dependency on phpunit/phpunit-skeleton-generator:
+Simply add a dependency on `jeancarloem/phpunit-skeleton-builder` to your project's `composer.json` file if you use [Composer](http://getcomposer.org/) to manage the dependencies of your project. Here is a minimal example of a `composer.json` file that just defines a development-time dependency on `jeancarloem/phpunit-skeleton-builder`:
 
     {
         "require-dev": {
-            "phpunit/phpunit-skeleton-generator": "*"
+            "jeancarloem/phpunit-skeleton-builder": "*"
         }
     }
 
 For a system-wide installation via Composer, you can run:
 
-    composer global require "phpunit/phpunit-skeleton-generator=*"
+    composer require --dev "jeancarloem/phpunit-skeleton-builder=*"
+
+Or
+
+    composer global require "jeancarloem/phpunit-skeleton-builder=*"
 
 Make sure you have `~/.composer/vendor/bin/` in your path.
 

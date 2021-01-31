@@ -1,7 +1,7 @@
-build/phar
-build/*.phar
+*.phar
 .idea
 cache.properties
 composer.phar
 composer.lock
 vendor
+nbproject
